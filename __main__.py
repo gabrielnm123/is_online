@@ -20,8 +20,7 @@ try:
                 send_gmail.get_body_and_ip('online.html', ip)
                 send_gmail.send()
                 online_ip_list.append(ip)
-                if ip in ip_list_not_online:
-                    ip_list_not_online.remove(ip)
+                ip_list_not_online.remove(ip)
             elif not is_online and ip not in ip_list_not_online:
                 send_gmail.get_body_and_ip('offline.html', ip)
                 send_gmail.send()
