@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    image: is_online:1.0.0
+    working_dir: /app
+    volumes:
+      - .:/app
+    entrypoint: ipython .
+    stdin_open: true
+    tty: true
+    restart: unless-stopped
+    network_mode: host
