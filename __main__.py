@@ -1,8 +1,8 @@
 try:
     from ping3 import ping
-    from send_gmail import SendEmail
+    from send_email import SendEmail
 
-    send_gmail = SendEmail(
+    send_email = SendEmail(
         'Relatório de Ip',
         '@from.com',
         '@to.com',
@@ -17,13 +17,13 @@ try:
         for ip in IP_TESTING_LIST:
             is_online = ping(ip)
             if is_online and ip not in online_ip_list:
-                send_gmail.get_body_and_ip('online.html', ip)
-                send_gmail.send()
+                send_email.get_body_and_ip('online.html', ip)
+                send_email.send()
                 online_ip_list.append(ip)
                 ip_list_not_online.remove(ip)
             elif not is_online and ip not in ip_list_not_online:
-                send_gmail.get_body_and_ip('offline.html', ip)
-                send_gmail.send()
+                send_email.get_body_and_ip('offline.html', ip)
+                send_email.send()
                 online_ip_list.remove(ip)
                 ip_list_not_online.append(ip)
 except Exception as error:
