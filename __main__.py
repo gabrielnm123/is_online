@@ -6,7 +6,9 @@ try:
         'Relatório de Ip',
         '@from.com',
         '@to.com',
-        'password'
+        'password',
+        'smtp.gmail.com',
+        '587'
     )
 
     IP_TESTING_LIST = ['8.8.8.8', 'lfjlas']
@@ -15,7 +17,10 @@ try:
 
     while True:
         for ip in IP_TESTING_LIST:
-            is_online = ping(ip)
+            for counter in range(600):
+                is_online = ping(ip)
+                if is_online:
+                    break
             if is_online and ip not in online_ip_list:
                 send_email.get_body_and_ip('online.html', ip)
                 send_email.send()
