@@ -10,9 +10,12 @@ class SendEmail():
         self.smtp_server = smtp_server
         self.smtp_port = smtp_port
 
-    def get_body_and_ip(self, body_in_file: str, ip: str) -> None:
+    def get_body(self, body_in_file: str, dict: dict | None=None) -> None:
         with open(body_in_file, 'r') as body:
-            self._body = body.read().format(ip=ip)
+            if dict:
+                self._body = body.read().format_map(dict=dict)
+            else:
+                self._body = body.read()
 
     def send(self) -> None:
         msg = email.message.Message()

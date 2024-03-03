@@ -22,7 +22,7 @@ try:
                 if is_online:
                     break
             if is_online and ip not in online_ip_list:
-                send_email.get_body_and_ip('online.html', ip)
+                send_email.get_body('online.html', {'ip': ip})
                 send_email.send()
                 online_ip_list.append(ip)
                 ip_list_not_online.remove(ip)
