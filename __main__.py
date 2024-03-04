@@ -27,7 +27,7 @@ try:
                 online_ip_list.append(ip)
                 ip_list_not_online.remove(ip)
             elif not is_online and ip not in ip_list_not_online:
-                send_email.get_body_and_ip('offline.html', ip)
+                send_email.get_body('offline.html', ip)
                 send_email.send()
                 online_ip_list.remove(ip)
                 ip_list_not_online.append(ip)
