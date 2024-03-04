@@ -10,10 +10,10 @@ class SendEmail():
         self.smtp_server = smtp_server
         self.smtp_port = smtp_port
 
-    def get_body(self, body_in_file: str, dict: dict | None=None) -> None:
+    def get_body(self, body_in_file: str, info: dict | None=None) -> None:
         with open(body_in_file, 'r') as body:
-            if dict:
-                self._body = body.read().format_map(dict=dict)
+            if info:
+                self._body = body.read().format_map(info)
             else:
                 self._body = body.read()
 
