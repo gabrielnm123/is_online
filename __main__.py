@@ -32,5 +32,5 @@ try:
                 online_ip_list.remove(ip)
                 ip_list_not_online.append(ip)
 except Exception as error:
-    with open('log.txt', 'w') as log:
+    with open('error.txt', 'w') as log:
         log.write(str(error))
